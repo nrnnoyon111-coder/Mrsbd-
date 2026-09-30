@@ -1,0 +1,36 @@
+<!doctype html><html lang="en" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MRS FAST SOLUTIONS · Your Trusted Partner in Industrial World</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600&family=IBM+Plex+Sans:wght@400;500&display=swap"><link rel="stylesheet" href="style.css"></head><body>
+<canvas id="pcb"></canvas>
+<div class="top"><a class="brand" href="#"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M13 2 4 14h6l-1 8 9-12h-6z" fill="#ffd21f"/></svg><b>MRS FAST SOLUTIONS</b></a><span><button class="ic" id="th">Theme</button> <a class="btn" href="login.html">Open Dashboard</a></span></div>
+<section class="sec hero"><div><h1>Smart Electronics Business Management Platform</h1><p>A modern technology solution to manage customers, sales, services and business operations efficiently.</p><a class="btn" href="login.html">Open Dashboard</a><a class="btn ghost" href="#contact">Contact Us</a></div>
+<div class="vis"><div class="glass panel p1 fl"><span class="mut">Revenue this week</span><div class="big">৳ ••••••</div><div class="bars"><i style="height:35%"></i><i style="height:55%"></i><i style="height:42%"></i><i style="height:78%"></i><i style="height:64%"></i><i style="height:92%"></i><i style="height:70%"></i></div></div><div class="glass panel p2 fl"><span class="mut">Repairs in progress</span><div class="big"><span class="bolt">⚡</span> Live</div></div><div class="glass panel p3 fl"><span class="mut">Stock alerts</span><div class="big">Low: 3</div></div></div></section>
+<section class="sec"><h2>Company profile</h2><div class="glass co rv"><svg viewBox="0 0 24 24" width="64" height="64"><path d="M13 2 4 14h6l-1 8 9-12h-6z" fill="#ffd21f"/></svg><div><h3>MRS FAST SOLUTIONS</h3><p class="mut">Your Trusted Partner in Industrial World</p><p>Electronic Goods Importer, Seller &amp; Repairing</p><p class="mut">City Corporation Market, Kam Shopping Complex (2nd Floor), Shop No-61, Mirpur-13, Dhaka-1216</p></div></div></section>
+<section class="sec" id="contact"><h2>Contact</h2><div class="glass co rv"><div><h3>Md. Rakibul Islam</h3><p class="mut">Proprietor</p><p>01334362397 · 01575521781</p><p>mrsfastsolutions@gmail.com</p><div class="acts"><a class="btn" href="tel:01334362397">Call now</a><a class="btn ghost" id="wa" target="_blank" rel="noopener">WhatsApp</a><a class="btn ghost" id="em" target="_blank" rel="noopener">Email</a></div></div></div></section>
+<section class="sec"><h2>Services</h2><div class="grid" id="sv"></div></section>
+<footer>© MRS FAST SOLUTIONS · Mirpur-13, Dhaka</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script><script src="config.js"></script>
+<script>
+document.documentElement.dataset.theme=localStorage.mrs_theme||'dark';
+th.onclick=()=>{const t=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=t;localStorage.mrs_theme=t};
+wa.href='https://wa.me/'+CONFIG.WA;em.href='https://mail.google.com/mail/?view=cm&to='+CONFIG.EMAIL;
+const I=p=>`<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="${p}"/></svg>`;
+sv.innerHTML=[['Electronic Goods Supply','Imported components and devices for industry.','M3 7l9-4 9 4v10l-9 4-9-4z'],['Electronic Repairing','Bench diagnosis and repair, tracked from receipt to delivery.','M14 6l4 4-9 9H5v-4z'],['Industrial Solutions','Parts and support for industrial equipment.','M4 20V8l6 4V8l6 4V4h4v16z'],['Customer Support','Direct contact with the shop team.','M4 12a8 8 0 0116 0v5a2 2 0 01-2 2h-2v-6h4M4 13h4v6H6a2 2 0 01-2-2z'],['Product Management','Stock levels and pricing kept current.','M4 6h16M4 12h16M4 18h10']].map(([t,d,p])=>`<div class="glass card rv">${I(p)}<h3>${t}</h3><p>${d}</p></div>`).join('');
+const c=pcb,x=c.getContext('2d'),red=matchMedia('(prefers-reduced-motion:reduce)').matches;let W,H,T=[],P=[];
+function init(){W=c.width=innerWidth;H=c.height=innerHeight;T=[];P=[];const g=60;
+ for(let i=0;i<W*H/26000;i++){let px=Math.round(Math.random()*W/g)*g,py=Math.round(Math.random()*H*1.6/g)*g,a=[[px,py]];for(let s=0;s<3+Math.random()*4;s++){const d=Math.floor(Math.random()*8)*Math.PI/4,l=g*(1+Math.floor(Math.random()*2));px+=Math.round(Math.cos(d))*l;py+=Math.round(Math.sin(d))*l;a.push([px,py])}T.push({a,t:Math.random(),v:.002+Math.random()*.003})}
+ for(let i=0;i<50;i++)P.push([Math.random()*W,Math.random()*H,(Math.random()-.5)*.3,(Math.random()-.5)*.3])}
+function at(a,t){const n=a.length-1,f=t*n,i=Math.min(n-1,Math.floor(f)),u=f-i;return[a[i][0]+(a[i+1][0]-a[i][0])*u,a[i][1]+(a[i+1][1]-a[i][1])*u]}
+function draw(){const cs=getComputedStyle(document.documentElement),cy=cs.getPropertyValue('--cy'),bl=cs.getPropertyValue('--blue'),yl=cs.getPropertyValue('--yl');x.clearRect(0,0,W,H);
+ x.save();x.translate(0,-Math.min(scrollY*.2,H*.6));x.lineWidth=1.5;
+ T.forEach(o=>{x.strokeStyle=bl;x.globalAlpha=.28;x.beginPath();o.a.forEach((p,i)=>i?x.lineTo(...p):x.moveTo(...p));x.stroke();const e=o.a[o.a.length-1];x.beginPath();x.arc(e[0],e[1],3,0,7);x.stroke();
+  o.t=(o.t+o.v)%1;const q=at(o.a,o.t);x.globalAlpha=1;x.fillStyle=Math.random()<.002?yl:cy;x.shadowColor=cy;x.shadowBlur=10;x.beginPath();x.arc(q[0],q[1],2.2,0,7);x.fill();x.shadowBlur=0});
+ x.restore();x.globalAlpha=.5;x.fillStyle=cy;
+ P.forEach(p=>{p[0]=(p[0]+p[2]+W)%W;p[1]=(p[1]+p[3]+H)%H;x.fillRect(p[0],p[1],1.6,1.6)});x.globalAlpha=1;
+ if(!red)requestAnimationFrame(draw)}
+init();draw();addEventListener('resize',init);
+if(window.gsap&&!red){gsap.registerPlugin(ScrollTrigger);
+ gsap.from('.hero h1,.hero p,.hero .btn',{y:30,opacity:0,duration:.9,stagger:.12,ease:'power3.out'});
+ gsap.to('.fl',{y:-14,repeat:-1,yoyo:true,duration:3,ease:'sine.inOut',stagger:.5});
+ gsap.to('.vis',{y:-80,scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+ gsap.utils.toArray('.rv').forEach(e=>gsap.from(e,{y:36,opacity:0,duration:.7,scrollTrigger:{trigger:e,start:'top 88%'}}));
+ if(window.Lenis){const l=new Lenis();l.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>l.raf(t*1000));gsap.ticker.lagSmoothing(0)}}
+</script></body></html>
